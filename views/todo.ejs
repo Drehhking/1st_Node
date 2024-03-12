@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Todo</h1><br>
+    <form action="/todo" style="max-width: auto; width: 50px; margin-top: 30px;" method="post">
+        <input type="text" name="name" id="input1" style="padding: 10px; border-radius: 5px; border: 2px solid blue; outline: 0;" placeholder="name"><br><br>
+    <input type="text" name="title" style="padding: 10px; border-radius: 5px; border: 2px solid blue; outline: 0;" id="input2" placeholder="title"><br><br>
+    <input type="text" style="padding: 10px; border-radius: 5px; border: 2px solid blue; outline: 0;" name="content" id="input3" placeholder="content"><br><br>
+    <button id="btn" style="background-color: blue; color: white; border: 0; padding: 10px; border-radius: 10px; border: 1px solid blue;" type="submit">addTodo</button>
+    </form>
+    <div>
+        <% todo.forEach((element, index)=> { %>
+         <div>
+             <p><%= element.name %></p>
+             <p><%= element.title %></p>
+             <p><%= element.content %></p>
+            <form action="/delete/<%= index %>" method="post">
+                <!-- <input name="index" type="hidden"value="<%= index %>"> -->
+                <button type="submit">delete</button>
+            </form>
+           <form action="/edit/<%= index %>" method="get">
+            <button class="btn btn-purple" type="submit" href="edit/">edit</button>
+           </form>
+         </div>
+        <% }) %>
+    </div>
+</body>
+</html>
